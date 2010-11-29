@@ -37,7 +37,7 @@ Grid.prototype.generateTable = function() {
 		for(var colIndex = 0; colIndex < colAndRowNumber; colIndex++){
 			content = this.content[idIndex]
 	 		dataTable += "<td id='" + idIndex++ +"'>" + 
-			"<img src='images/" + content + "' alt='" + content + "' />"
+			"<img src='images/" + content + ".jpg' alt='" + content + "' />"
 		}
 	}
 	dataTable += "</table>"

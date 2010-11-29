@@ -1,5 +1,4 @@
-var names = ['JP', 'Micheal Chen', 'Xiao Luo', 'Hu Kai', 'Huang Liang', 'Zheng Dada', 'Liu Yao', 'Gao Li', 'Wu Shaobo']
-var images = ['fu_ying.png', 'gao_li.png', 'hu_kai.png', 'huang_liang.png', 'liu_yao.png', 'xiao_luo.png', 'zheng_da_da.png']
+var images = ['gaoli', 'huangliang', 'hukai','jiangpeng','jinming','limo','liuyao','luowenjing','michaelchen','tony','xiongjie','xuhao','zhanglin','zhengye']
 
 
 function RandomGenerator(){

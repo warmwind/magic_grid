@@ -11,16 +11,16 @@ $(document).ready(function() {
 		$("input:radio[name='level']").filter("[value="+sessionStorage.insurance+"]").attr("checked","checked");
 	}
 	var grid = new Grid(sessionStorage.insurance)
-	var player = new Player()
-    watchIntervalId = setInterval(function(){displayWatchPage(grid, player)}, 1000);
+	var state = new State()
+    watchIntervalId = setInterval(function(){displayWatchPage(grid, state)}, 1000);
 	writeTable(grid)
 });
 
 var t = 3;
-function displayWatchPage(grid, player)
+function displayWatchPage(grid, state)
 {
 	if(showTimeInfo()){
-		hideDataTable(grid, player)
+		hideDataTable(grid, state)
 	}
 }
 
@@ -51,14 +51,14 @@ function showLifeInfo(life){
    $('#life').html('Life :' + life)
 }
 
-function handleResult(grid, value, player){
+function handleResult(grid, value, state){
 		if(!grid.handleClickEvent(value)){
-			showLifeInfo(--player.lifeNumber)
-			$('#'+ value +' img').attr("src", "images/sad.jpeg")
+			showLifeInfo(--state.lifeNumber)
+			$('#'+ value +' img').attr("src", "images/sad.jpg")
 			
 		}
 		else{
-			$('#'+ value +' img').attr("src", "images/" + grid.content[value])
+			$('#'+ value +' img').attr("src", "images/" + grid.content[value] +".jpg")
 		}
 		if(grid.leftNumber == 0)
 		{
@@ -66,7 +66,7 @@ function handleResult(grid, value, player){
 			cleanLeftData()
 			$('#main').html("<p class='win'>You win!!!!!!!!!!!</p>")
 		}
-		if(player.lifeNumber <= 0)
+		if(state.lifeNumber <= 0)
 		{
 			stopGuessTime()
 			printLose()
@@ -85,23 +85,23 @@ function printLose(){
 	$('#main').html("<p class='lose'>You lose!!!!!!!!!!!</p>")
 }
 
-function hideDataTable(grid, player){
+function hideDataTable(grid, state){
 	stopWatchTime()
 	$.each($('img'), function(){
 		$(this).fadeOut('slow', function(){
-			$(this).attr("src", "images/smile.jpeg")
+			$(this).attr("src", "images/question.jpg")
 		})
 		$(this).fadeIn('slow')
 		});
-	triggerGuessPage(grid, player)
+	triggerGuessPage(grid, state)
 	writeResultStatus(grid)
-	showLifeInfo(player.lifeNumber)
+	showLifeInfo(state.lifeNumber)
 }
 
-function triggerGuessPage(grid, player){
+function triggerGuessPage(grid, state){
 	t = 5
 	$('td').click(function(){
-		handleResult(grid, this.id, player)
+		handleResult(grid, this.id, state)
 	})
     guessIntervalId = setInterval(function(){displayGuessPage(grid)}, 1000);
 	$('#condition').html(grid.condition)
