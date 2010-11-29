@@ -1,4 +1,4 @@
-var names = ['JP', 'Micheal Chen', 'Xiao Luo', 'Hu Kai', 'Huang Liang', 'Zheng Dada', 'Liu Yao', 'Gao Li']
+var names = ['JP', 'Micheal Chen', 'Xiao Luo', 'Hu Kai', 'Huang Liang', 'Zheng Dada', 'Liu Yao', 'Gao Li', 'Wu Shaobo']
 
 function RandomGenerator(){
 }

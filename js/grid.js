@@ -1,18 +1,26 @@
 function Grid(){
-	this.content = RandomGenerator.generateContent(2)
+	this.content = RandomGenerator.generateContent(3)
 	this.condition = RandomGenerator.generateCondition(this.content)
 	this.totalNumber = this.GetResultArray().length
 	this.leftNumber =  this.GetResultArray().length
 }
-
+var selectedArray = new Array()
 Grid.prototype.handleClickEvent = function(index)  {
 	for(var i = 0; i < this.totalNumber; i++){
-		if(this.GetResultArray()[i] == index){
-			this.leftNumber--;
+		valueIndex = this.GetResultArray()[i]
+		if(valueIndex == index){
+			if(!sameOneSelect(valueIndex)){
+				this.leftNumber--;
+				selectedArray.push(index)
+			}
 			return true;
 		}
 	}
 	return false;
+}
+
+function sameOneSelect(valueIndex){
+	return selectedArray.contains(valueIndex)
 }
 
 Grid.prototype.GetResultArray = function(){
@@ -52,3 +60,21 @@ Grid.prototype.result = function(condition){
 }
 
 
+Array.prototype.remove = function(index){
+	var result = new Array()
+	for (var i=0; i < this.length; i++) {
+		if( i != index){
+			result.push(this[i])
+		}
+	};
+	return result;
+}
+
+Array.prototype.contains = function(value){
+	for (var i=0; i < this.length; i++) {
+		if( this[i] == value){
+			return true
+		}
+	}
+	return false
+}
