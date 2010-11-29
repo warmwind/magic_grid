@@ -1,4 +1,6 @@
 var names = ['JP', 'Micheal Chen', 'Xiao Luo', 'Hu Kai', 'Huang Liang', 'Zheng Dada', 'Liu Yao', 'Gao Li', 'Wu Shaobo']
+var images = ['fu_ying.png', 'gao_li.png', 'hu_kai.png', 'huang_liang.png', 'liu_yao.png', 'xiao_luo.png', 'zheng_da_da.png']
+
 
 function RandomGenerator(){
 }
@@ -21,8 +23,8 @@ RandomGenerator.generateContent = function(size){
 RandomGenerator.generateCandidateContent = function(size){
 	var result = new Array()
 	for(var i = 0; i < size; i++){
-		var randomnumber = generateNumberWithin(names.length)
-		result.push(names[randomnumber])
+		var randomnumber = generateNumberWithin(images.length)
+		result.push(images[randomnumber])
 	}
 	return result
 }

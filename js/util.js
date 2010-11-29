@@ -3,15 +3,16 @@ var guessIntervalId
 
 $(document).ready(function() {
 	var grid = new Grid()
-    watchIntervalId = setInterval(function(){displayWatchPage(grid)}, 1000);
+	var player = new Player()
+    watchIntervalId = setInterval(function(){displayWatchPage(grid, player)}, 1000);
 	writeTable(grid)
 });
 
 var t = 3;
-function displayWatchPage(grid)
+function displayWatchPage(grid, player)
 {
 	if(showTimeInfo()){
-		hideDataTable(grid)
+		hideDataTable(grid, player)
 	}
 }
 
@@ -34,31 +35,46 @@ function showTimeInfo()
     
 }
 
-function handleResult(grid, value){
+function showLifeInfo(life){
+   document.getElementById('life').innerHTML = 'You have ' + life + ' life(lives) left'
+}
+
+function handleResult(grid, value, player){
 		if(!grid.handleClickEvent(value)){
-			console.log("wrong")
+			showLifeInfo(--player.lifeNumber)
+			$('#'+ value +' img').attr("src", "images/sad.jpeg")
+			
 		}
 		if(grid.leftNumber == 0)
 		{
 			stopGuessTime()
-			$('#main').html("You win")
+			$('#main').html("You win!!!!!!!!!!!")
+		}
+		if(player.lifeNumber <= 0)
+		{
+			stopGuessTime()
+			$('#main').html("You lose")
 		}
 		writeResultStatus(grid)
 }
 
-function hideDataTable(grid){
+function hideDataTable(grid, player){
 	stopWatchTime()
-	$.each($('td'), function(){
-		this.innerHTML = 'XXX';
+	$.each($('img'), function(){
+		$(this).fadeOut('slow', function(){
+			$(this).attr("src", "images/smile.jpeg")
+		})
+		$(this).fadeIn('slow')
 		});
-	triggerGuessPage(grid)
+	triggerGuessPage(grid, player)
 	writeResultStatus(grid)
+	showLifeInfo(player.lifeNumber)
 }
 
-function triggerGuessPage(grid){
+function triggerGuessPage(grid, player){
 	t = 5
 	$('td').click(function(){
-		handleResult(grid, this.id)
+		handleResult(grid, this.id, player)
 	})
     guessIntervalId = setInterval(function(){displayGuessPage(grid)}, 1000);
 	$('#condition').html(grid.condition)
@@ -79,4 +95,8 @@ function stopWatchTime(){
 
 function stopGuessTime(){
 	clearInterval(guessIntervalId)
+}
+
+function replay(){
+	location.reload()
 }
