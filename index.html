@@ -4,32 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=620" />
     <title>Magic Grid</title>
-    <style type="text/css" media="screen">
-      body {
-        font-family: "Lucida Grande", Verdana;
-      }
-      #wrapper {
-        margin: 0 auto;
-        width: 600px;
-        border-radius: 6px;
-        -moz-border-radius: 6px;
-        -webkit-border-radius: 6px;
-        border: 1px solid #999;
-        -webkit-box-shadow: 2px 2px 2px 2px #ddd;
-        -moz-box-shadow: 2px 2px 2px 2px #ddd;
-        padding: 20px;
-      }
-      footer {
-        color: #ccc;
-        margin-top: 10px;
-        border-top: 1px dashed #ccc;
-      }
-      .note {
-        background-color: #EFFD3F;
-        padding: 4px;
-        font-size: 90%;
-      }
-    </style>
+    <link rel="stylesheet" href="css/application.css" type="text/css" />
     
     <script type="text/javascript" src="lib/jquery/jquery-ui-1.8.6.custom.min.js"></script>
     <script type="text/javascript" src="lib/jquery/jquery.min.js"></script>
@@ -44,18 +19,25 @@
   <body>
     <section id="wrapper">
       <header>
+        <p>Magic Grid of ThoughtWorkers</p>
       </header>
-      <article>
-        <p id='result'></p>
-        <p id='time'></p>
-        <p id='life'></p>
-        <p id='main'></p>
-        <p id='condition'>
-
-      </article>
-              <button type="button" onclick='replay()'>Replay</button>
+      <div class='content'>
+        <aside>
+          <ul>
+            <li id='result'></li>
+            <li id='life'></li>
+            <li id='time'></li>
+          </ul>
+        </aside>
+        <section class='main-content'>
+          <div id='main'></div>
+          <div id='condition'></div>
+          <a href='index.html'>Replay</a>
+        </section>
+        
+      </div>
       <footer>
-        <p>ThoughtWorks</p>
+        <p>pjiang@thoughtworks.com</p>
       </footer>
       
     </section>

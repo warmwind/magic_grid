@@ -19,7 +19,7 @@ function displayWatchPage(grid, player)
 function displayGuessPage(grid){
 	if(showTimeInfo()){
 		stopGuessTime()
-		$('#main').html("You lose")
+		printLose()
 	}
 }
 
@@ -27,16 +27,19 @@ function showTimeInfo()
 {
 	if(t >= 0 )
     {
-       document.getElementById('time').innerHTML = 'You have ' + t-- + ' second(s) left'
+       $('#time').html("<p class='time-number'>" + t-- + "</p>")
+       $('.time-number').animate({
+			fontSize: "3em"
+		}, 500, function(){})
        return false
     }
-    document.getElementById('time').innerHTML = 'Time is up!!'
+    $('#time').html('Time is up!!')
 	return true
     
 }
 
 function showLifeInfo(life){
-   document.getElementById('life').innerHTML = 'You have ' + life + ' life(lives) left'
+   $('#life').html('Life :' + life)
 }
 
 function handleResult(grid, value, player){
@@ -45,17 +48,24 @@ function handleResult(grid, value, player){
 			$('#'+ value +' img').attr("src", "images/sad.jpeg")
 			
 		}
+		else{
+			$('#'+ value +' img').attr("src", "images/" + grid.content[value])
+		}
 		if(grid.leftNumber == 0)
 		{
 			stopGuessTime()
-			$('#main').html("You win!!!!!!!!!!!")
+			$('#main').html("<p class='win'>You win!!!!!!!!!!!</p>")
 		}
 		if(player.lifeNumber <= 0)
 		{
 			stopGuessTime()
-			$('#main').html("You lose")
+			printLose()
 		}
 		writeResultStatus(grid)
+}
+
+function printLose(){
+	$('#main').html("<p class='lose'>You lose!!!!!!!!!!!</p>")
 }
 
 function hideDataTable(grid, player){
@@ -82,7 +92,7 @@ function triggerGuessPage(grid, player){
 }
 
 function writeResultStatus(grid){
-   document.getElementById('result').innerHTML = 'left number' + grid.leftNumber + '/' + grid.totalNumber
+   document.getElementById('result').innerHTML = 'Left : ' + grid.leftNumber + '/' + grid.totalNumber
 }
 
 function writeTable(grid){
