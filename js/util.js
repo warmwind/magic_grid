@@ -2,7 +2,15 @@ var watchIntervalId
 var guessIntervalId
 
 $(document).ready(function() {
-	var grid = new Grid()
+	$("input[name='level']:radio").change(function(){
+		sessionStorage.insurance = $("input:radio[name='level']:checked").val()
+		location.reload()
+	})
+	if(sessionStorage.insurance)
+	{
+		$("input:radio[name='level']").filter("[value="+sessionStorage.insurance+"]").attr("checked","checked");
+	}
+	var grid = new Grid(sessionStorage.insurance)
 	var player = new Player()
     watchIntervalId = setInterval(function(){displayWatchPage(grid, player)}, 1000);
 	writeTable(grid)
@@ -33,6 +41,7 @@ function showTimeInfo()
 		}, 500, function(){})
        return false
     }
+	cleanLeftData()
     $('#time').html('Time is up!!')
 	return true
     
@@ -54,14 +63,22 @@ function handleResult(grid, value, player){
 		if(grid.leftNumber == 0)
 		{
 			stopGuessTime()
+			cleanLeftData()
 			$('#main').html("<p class='win'>You win!!!!!!!!!!!</p>")
 		}
 		if(player.lifeNumber <= 0)
 		{
 			stopGuessTime()
 			printLose()
+			cleanLeftData()
 		}
 		writeResultStatus(grid)
+}
+
+function cleanLeftData(){
+	$('#time').html('')
+	$('#life').html('')
+	$('#result').html('')
 }
 
 function printLose(){
@@ -92,7 +109,7 @@ function triggerGuessPage(grid, player){
 }
 
 function writeResultStatus(grid){
-   document.getElementById('result').innerHTML = 'Left : ' + grid.leftNumber + '/' + grid.totalNumber
+   $('#result').html('Left : ' + grid.leftNumber + '/' + grid.totalNumber)
 }
 
 function writeTable(grid){

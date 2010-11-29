@@ -1,5 +1,5 @@
-function Grid(){
-	this.content = RandomGenerator.generateContent(3)
+function Grid(level){
+	this.content = RandomGenerator.generateContent(level)
 	this.condition = RandomGenerator.generateCondition(this.content)
 	this.totalNumber = this.GetResultArray().length
 	this.leftNumber =  this.GetResultArray().length
