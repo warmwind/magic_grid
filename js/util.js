@@ -1,56 +1,82 @@
-var intervalId
-$(document).ready(function() {
+var watchIntervalId
+var guessIntervalId
 
-    intervalId = setInterval('displayTime()', 1000);
+$(document).ready(function() {
+	var grid = new Grid()
+    watchIntervalId = setInterval(function(){displayWatchPage(grid)}, 1000);
+	writeTable(grid)
 });
 
 var t = 3;
-function displayTime()
+function displayWatchPage(grid)
 {
-    if(t >0 )
-    {
-       document.getElementById('time').innerHTML = 'You have ' + t-- + ' second(s) left'
-       return;
-    }
-    document.getElementById('time').innerHTML = 'Time is up!!'
-	hideDataTable()
+	if(showTimeInfo()){
+		hideDataTable(grid)
+	}
 }
 
-function hideDataTable(){
-	clearInterval(intervalId)
+function displayGuessPage(grid){
+	if(showTimeInfo()){
+		stopGuessTime()
+		$('#main').html("You lose")
+	}
+}
+
+function showTimeInfo()
+{
+	if(t >= 0 )
+    {
+       document.getElementById('time').innerHTML = 'You have ' + t-- + ' second(s) left'
+       return false
+    }
+    document.getElementById('time').innerHTML = 'Time is up!!'
+	return true
+    
+}
+
+function handleResult(grid, value){
+		if(!grid.handleClickEvent(value)){
+			console.log("wrong")
+		}
+		if(grid.leftNumber == 0)
+		{
+			stopGuessTime()
+			$('#main').html("You win")
+		}
+		writeResultStatus(grid)
+}
+
+function hideDataTable(grid){
+	stopWatchTime()
 	$.each($('td'), function(){
 		this.innerHTML = 'XXX';
 		});
-	var grid = new Grid()
+	triggerGuessPage(grid)
 	writeResultStatus(grid)
+}
 
+function triggerGuessPage(grid){
+	t = 5
 	$('td').click(function(){
-		if(!grid.handleClickEvent(this.id)){
-			alert("You loose one life!")
-		}
-		writeResultStatus(grid)
+		handleResult(grid, this.id)
 	})
-	    
+    guessIntervalId = setInterval(function(){displayGuessPage(grid)}, 1000);
+	$('#condition').html(grid.condition)
+
 }
 
 function writeResultStatus(grid){
-   document.getElementById('result').innerHTML = grid.leftNumber + '/' + grid.totalNumber
+   document.getElementById('result').innerHTML = 'left number' + grid.leftNumber + '/' + grid.totalNumber
 }
 
-function Grid(){
-	this.content = new Array('JP', 'MC', 'JP', 'MC')
-	this.result = new Array('JP', 'JP')
-	this.totalNumber = this.result.length
-	this.leftNumber =  this.result.length
+function writeTable(grid){
+   $('#main').html(grid.generateTable())
 }
 
-Grid.prototype.handleClickEvent = function(index)  
-{
-	for(var i = 0; i < this.result.length; i++){
-		if(this.result[i] == this.content[index]){
-			this.leftNumber--;
-			return true;
-		}
-	}
-	return false;
+function stopWatchTime(){
+	clearInterval(watchIntervalId)
+}
+
+function stopGuessTime(){
+	clearInterval(guessIntervalId)
 }
