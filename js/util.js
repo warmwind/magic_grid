@@ -6,12 +6,12 @@ $(document).ready(function() {
    drawMainPage()
 });
 
-var timeCountDown = 5;
+var timeCountDown = state.getCurrentLevel() * 2;
 function drawMainPage(){
 	stopWatchTime()
 	stopGuessTime()
-	timeCountDown = 5
 	var grid = new Grid(state.getNextStageLevel())
+	timeCountDown = state.getCurrentLevel() * 2
     watchIntervalId = setInterval(function(){displayWatchPage(grid, state)}, 1000);
 	writeTable(grid)
 	showLifeInfo(state.lifeNumber)
@@ -39,7 +39,7 @@ function showTimeInfo()
 {
 	if(timeCountDown >= 0 )
     {
-       $('#time').html(timeCountDown--)
+       $('#time').html('<span>' + timeCountDown-- + '</span>')
        return false
     }
 	cleanLeftData()
@@ -81,7 +81,7 @@ function handleResult(grid, value, state){
 		state.success = true
 		state.stopped = true
 		state.totalScore += 100
-		printInfo("<span class='win'>Congratulations!</span><a href='javascript:nextStage()'>Go Next!</a>")
+		printInfo("<span class='win'>Congratulations! </span><a href='javascript:nextStage()'>Go Next!</a>")
 	}
 	if(state.lifeNumber <= 0)
 	{
@@ -104,7 +104,7 @@ function printInfo(text){
 }
 
 function printLose(){
-	printInfo("<span class='lose'>You're so bad!</span><a href='javascript:replay()'>Try Again?</a>")
+	printInfo("<span class='lose'>You lose! </span><a href='javascript:replay()'>Try Again?</a>")
 }
 
 function hideDataTable(grid, state){
@@ -121,7 +121,7 @@ function hideDataTable(grid, state){
 }
 
 function triggerGuessPage(grid, state){
-	timeCountDown = 15
+	timeCountDown = state.getCurrentLevel() * 3
 	$('td').click(function(){
 		if(!state.stopped){
 			handleResult(grid, this.id, state)
