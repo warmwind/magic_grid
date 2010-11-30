@@ -62,3 +62,5 @@ test("should return false when array not contains value", function(){
 	equals(false, array.contains('d'))
 })
 
+
+

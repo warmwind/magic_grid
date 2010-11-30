@@ -2,6 +2,7 @@ var selectedArray
 function Grid(level){
 	this.content = RandomGenerator.generateContent(level)
 	this.condition = RandomGenerator.generateCondition(this.content)
+	this.displayCondition = "Find Grids With Photo of : " + people[this.condition]
 	this.totalNumber = this.GetResultArray().length
 	this.leftNumber =  this.GetResultArray().length
 	selectedArray = new Array()
@@ -58,8 +59,7 @@ Grid.prototype.findIndexInArray = function(value){
 
 
 Grid.prototype.result = function(condition){
-	var value = condition.substr(condition.indexOf(':') + 2)
-	return this.findIndexInArray(value)
+	return this.findIndexInArray(condition)
 }
 
 

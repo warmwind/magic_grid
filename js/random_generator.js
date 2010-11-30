@@ -1,13 +1,29 @@
 var images = ['gaoli', 'huangliang', 'hukai','jiangpeng','jinming','limo','liuyao','luowenjing','michaelchen','tony','xiongjie','xuhao','zhanglin','zhengye']
-
+var people = {
+	'gaoli' : 'Gao Li',
+	'huangliang': 'Huang Liang',
+	'hukai': 'Hu Kai',
+	'jiangpeng': 'Jiang Peng',
+	'jinming': 'Jin Ming',
+	'limo': 'Li Mo',
+	'liuyao': 'Liu Yao',
+	'luowenjing' : 'Luo Wenjing',
+	'tony': 'Qiao Liang',
+	'michaelchen': 'Chen Jinzhou',
+	'xiongjie': 'Xiong Jie',
+	'xuhao': 'Xu Hao',
+	'zhanglin': 'Zhang Lin',
+	'zhengye': 'Zheng Ye'
+	}
 
 function RandomGenerator(){
 }
 
 RandomGenerator.generateCondition = function(content){
 	var randomnumber = generateNumberWithin(content.length)
-	return 'find grid with name : ' + content[randomnumber]
+	return content[randomnumber]
 }
+
 
 RandomGenerator.generateContent = function(size){
 	var result = new Array()
