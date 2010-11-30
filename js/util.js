@@ -3,10 +3,15 @@ var guessIntervalId
 var state = new State()
 
 $(document).ready(function() {
-    var grid = new Grid(state.getNextStageLevel())
+   drawMainPage()
+});
+
+function drawMainPage(){
+	var grid = new Grid(state.getNextStageLevel())
     watchIntervalId = setInterval(function(){displayWatchPage(grid, state)}, 1000);
 	writeTable(grid)
-});
+	showLifeInfo(state.lifeNumber)
+}
 
 var t = 3;
 function displayWatchPage(grid, state)
@@ -28,10 +33,7 @@ function showTimeInfo()
 {
 	if(t >= 0 )
     {
-       $('#time').html("<p class='time-number'>" + t-- + "</p>")
-       $('.time-number').animate({
-			fontSize: "3em"
-		}, 500, function(){})
+       $('#time').html(t--)
        return false
     }
 	cleanLeftData()
@@ -40,10 +42,11 @@ function showTimeInfo()
 }
 
 function showLifeInfo(life){
-	var str = ''
+	var str = '<div>'
 	for(var i = 0; i< life; i++){
 		str += "<img src = 'images/life.jpg'>"
 	}
+	str += "</div>"
     $('#life').html(str)		
 }
 
@@ -51,15 +54,12 @@ function nextStage(){
 	$('header .info').html("")
 	state.currentStage  += 1
 	state.stopped = false
-    var grid = new Grid(state.getNextStageLevel())
-    watchIntervalId = setInterval(function(){displayWatchPage(grid, state)}, 1000);
-	writeTable(grid)
+	drawMainPage()
 }
 function handleResult(grid, value, state){
 	if(!grid.handleClickEvent(value)){
 		showLifeInfo(--state.lifeNumber)
 		$('#'+ value +' img').attr("src", "images/sad.jpg")
-		
 	}
 	else{
 		$('#'+ value +' img').attr("src", "images/" + grid.content[value] +".jpg")
@@ -70,7 +70,7 @@ function handleResult(grid, value, state){
 		cleanLeftData()
 		state.success = true
 		state.stopped = true
-		printInfo("<p class='win'>You win!!!!!!!!!!!<a href='javascript:nextStage()'>Go Next!</a></p>")
+		printInfo("<span class='win'>You win!!!!!!!!!!!<a href='javascript:nextStage()'>Go Next!</a></span>")
 	}
 	if(state.lifeNumber <= 0)
 	{
@@ -84,7 +84,6 @@ function handleResult(grid, value, state){
 
 function cleanLeftData(){
 	$('#time').html('')
-	$('#life').html('')
 	$('#result').html('')
 }
 
@@ -93,7 +92,7 @@ function printInfo(text){
 }
 
 function printLose(){
-	printInfo("<p class='lose'>You lose!!!!!!!!!!!<a href='javascript:replay()'>Try Again?</a></p>")
+	printInfo("<span class='lose'>You lose!!!!!!!!!!!<a href='javascript:replay()'>Try Again?</a></span>")
 }
 
 function hideDataTable(grid, state){
@@ -110,7 +109,7 @@ function hideDataTable(grid, state){
 }
 
 function triggerGuessPage(grid, state){
-	t = 5
+	t = 15
 	$('td').click(function(){
 		if(!state.stopped){
 			handleResult(grid, this.id, state)
