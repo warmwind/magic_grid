@@ -1,0 +1,107 @@
+body {
+  font-family: "Lucida Grande", Verdana;
+}
+
+#wrapper {
+  margin: 0 auto;
+  width: 600px;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  border: 1px solid #999;
+  -webkit-box-shadow: 2px 2px 2px 2px #ddd;
+  -moz-box-shadow: 2px 2px 2px 2px #ddd;
+  padding: 10px;
+  height: 480px;
+
+}
+
+header{
+	margin : 5px, auto;
+	font-weight: bold;
+	border-bottom: 1px dashed #orange;
+	text-align: center;
+	height: 30px;
+}
+
+footer {
+  color: #ccc;
+  border-top: 1px dashed #ccc;
+  height: 20px;
+  text-align: center;
+}
+
+.note {
+  background-color: #EFFD3F;
+  padding: 4px;
+  font-size: 90%;
+}
+
+/*status*/
+.current {
+	height:40px;
+	margin-bottom:5px;
+	position:relative;
+}
+#result {
+	float:right;
+	display: inline-block;
+}
+
+#life{
+	float:left;
+	display: inline-block;
+	padding-left:10px;
+	width: 60px;
+}
+#score{
+	display: inline-block;
+	position:absolute;
+	padding-left: 190px;
+}
+.time-status {
+	height:30px;
+/*	margin:100px, 20px, 0px 30px;*/
+}
+
+#time{
+	margin:25px 0px, 0px, 50px;
+	color: red;
+	font-weight: bold;
+	font-size: 3em;
+}
+
+#time span{
+		padding-left:50px;
+		padding-top:300px;
+}
+
+.info {
+	height: 20px;
+	text-align:center;
+}
+.info .win{
+	color: green;
+}
+.info .lose{
+	color: red;
+
+}
+
+/*status*/
+
+/*main*/
+
+#main{   
+    height: 300px; 
+ 	text-align: center;
+}  
+
+#main table{
+	margin: 10px auto;
+}
+
+#main table img{
+	cursor: pointer;
+}
+/*main*/
