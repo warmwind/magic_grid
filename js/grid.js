@@ -1,10 +1,12 @@
+var selectedArray 
 function Grid(level){
 	this.content = RandomGenerator.generateContent(level)
 	this.condition = RandomGenerator.generateCondition(this.content)
 	this.totalNumber = this.GetResultArray().length
 	this.leftNumber =  this.GetResultArray().length
+	selectedArray = new Array()
 }
-var selectedArray = new Array()
+
 Grid.prototype.handleClickEvent = function(index)  {
 	for(var i = 0; i < this.totalNumber; i++){
 		valueIndex = this.GetResultArray()[i]
