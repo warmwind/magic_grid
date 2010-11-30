@@ -81,7 +81,7 @@ function handleResult(grid, value, state){
 		state.success = true
 		state.stopped = true
 		state.totalScore += 100
-		printInfo("<span class='win'>You win!!!!!!!!!!!<a href='javascript:nextStage()'>Go Next!</a></span>")
+		printInfo("<span class='win'>Congratulations!</span><a href='javascript:nextStage()'>Go Next!</a>")
 	}
 	if(state.lifeNumber <= 0)
 	{
@@ -104,7 +104,7 @@ function printInfo(text){
 }
 
 function printLose(){
-	printInfo("<span class='lose'>You lose!!!!!!!!!!!<a href='javascript:replay()'>Try Again?</a></span>")
+	printInfo("<span class='lose'>You're so bad!</span><a href='javascript:replay()'>Try Again?</a>")
 }
 
 function hideDataTable(grid, state){
