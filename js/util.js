@@ -69,10 +69,10 @@ function nextStage(){
 function handleResult(grid, value, state){
 	if(!grid.handleClickEvent(value)){
 		showLifeInfo(--state.lifeNumber)
-		$('#'+ value +' img').attr("src", "images/sad.jpg")
+		$('#'+ value +' .back img').attr("src", "images/sad.jpg")
 	}
 	else{
-		$('#'+ value +' img').attr("src", "images/" + grid.content[value] +".jpg")
+		$('#'+ value +' .back img').attr("src", "images/" + grid.content[value] +".jpg")
 	}
 	if(grid.leftNumber == 0)
 	{
@@ -109,7 +109,7 @@ function printLose(){
 
 function hideDataTable(grid, state){
 	stopWatchTime()
-	$.each($('img'), function(){
+	$.each($('.front img'), function(){
 		$(this).fadeOut('slow', function(){
 			$(this).attr("src", "images/question.jpg")
 		})

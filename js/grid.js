@@ -23,6 +23,7 @@ function Grid(level){
 })(jQuery)
 
 Grid.prototype.handleClickEvent = function(index)  {
+	$('#' + index).addClass('flip')
 	for(var i = 0; i < this.totalNumber; i++){
 		valueIndex = this.GetResultArray()[i]
 		if(valueIndex == index){
@@ -61,8 +62,9 @@ Grid.prototype.generateTable = function() {
 		dataTable += "<tr>"
 		for(var colIndex = 0; colIndex < colAndRowNumber; colIndex++){
 			content = this.content[idIndex]
-	 		dataTable += "<td id='" + idIndex++ +"'>" + 
-			"<img src='images/" + content + ".jpg' alt='" + content + "' />"
+	 		dataTable += "<td class= 'panel' id='" + idIndex++ +"'>" + 
+			"<div class='front'><img src='images/" + content + ".jpg' alt='" + content + "' /></div>" +
+			"<div class='back'><img src='images/question.jpg' alt='" + content + "' /></div>" 
 		}
 	}
 	dataTable += "</table>"

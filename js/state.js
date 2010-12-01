@@ -1,6 +1,6 @@
 function State(){
 	this.levels = [2, 2, 2,  3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 5, 5, 5]	
-	this.lifeNumber = 3 
+	this.lifeNumber = 3
 	this.currentStage = 0
 	this.totalScore = 0
 	this.success = false
