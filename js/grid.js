@@ -6,7 +6,21 @@ function Grid(level){
 	this.totalNumber = this.GetResultArray().length
 	this.leftNumber =  this.GetResultArray().length
 	selectedArray = new Array()
+	this.preloadImg()
 }
+
+(function($) {
+  var cache = [];
+  // Arguments are image paths relative to the current page.
+  $.preLoadImages = function() {
+    var args_len = arguments.length;
+    for (var i = args_len; i--;) {
+      var cacheImage = document.createElement('img');
+      cacheImage.src = arguments[i];
+      cache.push(cacheImage);
+    }
+  }
+})(jQuery)
 
 Grid.prototype.handleClickEvent = function(index)  {
 	for(var i = 0; i < this.totalNumber; i++){
@@ -30,11 +44,19 @@ Grid.prototype.GetResultArray = function(){
 	return this.result(this.condition)
 }
 
+Grid.prototype.preloadImg = function(){
+	for(var i = 0; i< this.content.length ; i++){
+		content = this.content[i]
+		jQuery.preLoadImages("images/" + content + ".jpg");
+	}
+}
+
 Grid.prototype.generateTable = function() {
 	var dataTable =""
 	dataTable += "<table>"
 	var colAndRowNumber = Math.sqrt(this.content.length)
 	var idIndex = 0
+	this.preloadImg(colAndRowNumber)
 	for(var rowIndex = 0; rowIndex < colAndRowNumber; rowIndex++){
 		dataTable += "<tr>"
 		for(var colIndex = 0; colIndex < colAndRowNumber; colIndex++){
@@ -46,6 +68,8 @@ Grid.prototype.generateTable = function() {
 	dataTable += "</table>"
 	return dataTable
 }
+
+
 
 Grid.prototype.findIndexInArray = function(value){
 	var resultArray = new Array()

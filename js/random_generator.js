@@ -1,18 +1,32 @@
-var images = ['gaoli', 'huangliang', 'hukai','jiangpeng','jinming','limo','liuyao','luowenjing','michaelchen','tony','xiongjie','xuhao','zhanglin','zhengye']
+var images = ['fubo', 'gaoli', 'huangliang', 'hukai','jiangpeng','jinming','limo', 'liufan', 'liuyao','luowenjing','michaelchen',
+              'renjing', 'sunlong', 'sunyan', 'tony', 'wangxia', 'wangxiaosheng', 'wushaobo', 'xiajie', 'xiaopeng', 'xiongjie',
+              'xuhao','zhanglei', 'zhanglin','zhangxiaoqing', 'zhengye']
 var people = {
+	'fubo' : 'Fu Bo',
 	'gaoli' : 'Gao Li',
 	'huangliang': 'Huang Liang',
 	'hukai': 'Hu Kai',
 	'jiangpeng': 'Jiang Peng',
 	'jinming': 'Jin Ming',
 	'limo': 'Li Mo',
+	'liufan': 'Liu Fan',
 	'liuyao': 'Liu Yao',
 	'luowenjing' : 'Luo Wenjing',
-	'tony': 'Qiao Liang',
 	'michaelchen': 'Chen Jinzhou',
+	'renjing': 'Ren Jing',
+	'sunlong': 'Sun Long',
+	'sunyan': 'Sun Yan',
+	'tony': 'Qiao Liang',
+	'wangxia': 'Wang Xia',
+	'wangxiaosheng': 'Wang Xiaosheng',
+	'wushaobo': 'Wu Shaobo',
+	'xiajie': 'Xia Jie',
+	'xiaopeng': 'Xiao Peng',
 	'xiongjie': 'Xiong Jie',
 	'xuhao': 'Xu Hao',
+	'zhanglei': 'Zhang Lei',
 	'zhanglin': 'Zhang Lin',
+	'zhangxiaoqing': 'Zhang Xiaoqing',
 	'zhengye': 'Zheng Ye'
 	}
 
