@@ -3,7 +3,7 @@ var guessIntervalId
 var state = new State()
 
 $(document).ready(function() {
-   drawMainPage()
+	printInfo("<span>Welcome To Magic Grid of TWers. Good Luck! </span> <br/> <a href='javascript:drawMainPage()'>Start!</a>")
 });
 
 var timeCountDown = state.getCurrentLevel() * 2;
