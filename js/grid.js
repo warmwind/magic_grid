@@ -6,7 +6,6 @@ function Grid(level){
 	this.totalNumber = this.GetResultArray().length
 	this.leftNumber =  this.GetResultArray().length
 	selectedArray = new Array()
-	this.preloadImg()
 }
 
 (function($) {
@@ -45,19 +44,12 @@ Grid.prototype.GetResultArray = function(){
 	return this.result(this.condition)
 }
 
-Grid.prototype.preloadImg = function(){
-	for(var i = 0; i< this.content.length ; i++){
-		content = this.content[i]
-		jQuery.preLoadImages("images/" + content + ".jpg");
-	}
-}
 
 Grid.prototype.generateTable = function() {
 	var dataTable =""
 	dataTable += "<table>"
 	var colAndRowNumber = Math.sqrt(this.content.length)
 	var idIndex = 0
-	this.preloadImg(colAndRowNumber)
 	for(var rowIndex = 0; rowIndex < colAndRowNumber; rowIndex++){
 		dataTable += "<tr>"
 		for(var colIndex = 0; colIndex < colAndRowNumber; colIndex++){

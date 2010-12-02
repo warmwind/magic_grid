@@ -2,9 +2,18 @@ var watchIntervalId
 var guessIntervalId
 var state = new State()
 
+
 $(document).ready(function() {
+    preloadImg()
 	printInfo("<span>Welcome To Magic Grid of TWers. Good Luck! </span> <br/><br/><br/><br/> <a href='javascript:drawMainPage()'>Start!</a>")
 });
+
+function preloadImg(){
+	for(var i = 0; i< images.length; i++){
+		content = images[i]
+		jQuery.preLoadImages("images/" + content + ".jpg");
+	}
+}
 
 var timeCountDown = state.getCurrentLevel() * 2;
 function drawMainPage(){
