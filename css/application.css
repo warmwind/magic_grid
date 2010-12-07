@@ -24,6 +24,16 @@ header{
 	height: 30px;
 }
 
+header span{
+	padding-left:100px;
+}
+
+header a{
+	float:right;
+	font-size:12px;
+	margin-top:10px;
+}
+
 footer {
   color: #ccc;
   border-top: 1px dashed #ccc;
@@ -211,8 +221,6 @@ footer {
 #main-all .all-panel img{
 	cursor: default;
 }
-/* -- make sure to declare a default for every property that you want animated -- */
-/* -- general styles, including Y axis rotation -- */
 .all-panel .all-front {
 	float: none;
 	position: absolute;

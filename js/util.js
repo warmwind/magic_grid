@@ -40,6 +40,7 @@ function displayGuessPage(grid){
 	if(showTimeInfo()){
 		stopGuessTime()
 		state.stopped = true
+		showLeftImages(grid)
 		printLose()
 	}
 }
@@ -97,9 +98,19 @@ function handleResult(grid, value, state){
 		stopGuessTime()
 		state.success = false
 		state.stopped = true
+		showLeftImages(grid)
 		printLose()
 	}
 	writeResultStatus(grid)
+}
+
+function showLeftImages(grid){
+	result = grid.GetResultArray()
+	for (var i=0; i < result.length; i++) {
+		current = result[i]
+		$('#' + current).addClass('flip')
+		$('#'+ current +' .back img').attr("src", "images/" + grid.content[current] +".jpg")
+	};
 }
 
 function cleanLeftData(){
