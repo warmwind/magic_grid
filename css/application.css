@@ -218,9 +218,6 @@ footer {
 	-webkit-perspective: 600;
 }
 
-#main-all .all-panel img{
-	cursor: default;
-}
 .all-panel .all-front {
 	float: none;
 	position: absolute;
@@ -253,21 +250,9 @@ footer {
 	margin: 0px auto;
 }
 
-
-/*#main-all .thumb {
-	float: left;
-	list-style: none;
-	margin: 0; padding: 10px;
-	width: 360px;
+#main-all image{
+	cursor:pointer;
 }
-#main-all .thumb td {
-	margin: 0; padding: 5px;
-	float: left;
-	position: relative; 
-	width: 110px;
-	height: 110px;
-}*/
-
 
 
 
