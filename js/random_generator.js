@@ -1,33 +1,44 @@
-var images = ['fubo', 'gaoli', 'huangliang', 'hukai','jiangpeng','jinming','limo', 'liufan', 'liuyao','luowenjing','michaelchen',
-              'renjing', 'sunlong', 'sunyan', 'tony', 'wangxia', 'wangxiaosheng', 'wushaobo', 'xiajie', 'xiaopeng', 'xiongjie',
-              'xuhao','zhanglei', 'zhanglin','zhangxiaoqing', 'zhengye']
+var images = ['changxin', 'fubo', 'fuying', 'gaoli', 'huangliang', 'hukai','jiangpeng','jiangqingsong', 'jiayongna', 'jinming','limo', 
+              'liufan', 'liuyao','lixiang', 'luowenjing','michaelchen', 'peixinrui', 'renjing', 'sunlong', 'sunyan', 'tony', 
+              'wangxia', 'wangxiaosheng', 'wangyuheng','wushaobo', 'xiajie', 'xiaopeng', 'xiongjie', 'xiongzichuan', 'xuhao',
+              'zhanglei', 'zhanglin','zhangxiaoqing', 'zhengye', 'zhangyuheng', 'zhouxiaoqiang']
 var people = {
+	'changxin': 'Chang Xin',
 	'fubo' : 'Fu Bo',
+	'fuying': 'Fu Ying',
 	'gaoli' : 'Gao Li',
 	'huangliang': 'Huang Liang',
 	'hukai': 'Hu Kai',
 	'jiangpeng': 'Jiang Peng',
+	'jiangqingsong': 'Jiang Qingsong',
+	'jiayongna': 'Jia Yongna',
 	'jinming': 'Jin Ming',
 	'limo': 'Li Mo',
 	'liufan': 'Liu Fan',
 	'liuyao': 'Liu Yao',
+	'lixiang': 'Li Xiang',
 	'luowenjing' : 'Luo Wenjing',
 	'michaelchen': 'Chen Jinzhou',
+	'peixinrui': 'Pei Xinrui',
 	'renjing': 'Ren Jing',
 	'sunlong': 'Sun Long',
 	'sunyan': 'Sun Yan',
 	'tony': 'Qiao Liang',
 	'wangxia': 'Wang Xia',
 	'wangxiaosheng': 'Wang Xiaosheng',
+	'wangyuheng': 'Wang Yuheng',
 	'wushaobo': 'Wu Shaobo',
 	'xiajie': 'Xia Jie',
 	'xiaopeng': 'Xiao Peng',
 	'xiongjie': 'Xiong Jie',
+	'xiongzichuan': 'Xiong Zichuan',
 	'xuhao': 'Xu Hao',
 	'zhanglei': 'Zhang Lei',
 	'zhanglin': 'Zhang Lin',
 	'zhangxiaoqing': 'Zhang Xiaoqing',
-	'zhengye': 'Zheng Ye'
+	'zhengye': 'Zheng Ye',
+	'zhangyuheng': 'Zhang Yuheng',
+	'zhouxiaoqiang': 'Zhou Xiaoqiang'
 	}
 
 function RandomGenerator(){
