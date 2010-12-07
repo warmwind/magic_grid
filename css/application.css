@@ -134,8 +134,6 @@ footer {
 	-moz-box-shadow: 0 1px 5px rgba(0,0,0,0.9);
 	-webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.9);
 	
-	-webkit-transform: rotateY(0deg);
-	-webkit-transform-style: preserve-3d;
 	-webkit-backface-visibility: hidden;
 
 	/* -- transition is the magic sauce for animation -- */
@@ -167,7 +165,6 @@ footer {
 	text-shadow: 1px  1px 1px rgba(0,0,0,0.6); 
 	
 	-webkit-transform: rotateY(-180deg);
-	-webkit-transform-style: preserve-3d;
 	-webkit-backface-visibility: hidden;
 
 	/* -- transition is the magic sauce for animation -- */

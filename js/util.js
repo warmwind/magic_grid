@@ -15,12 +15,12 @@ function preloadImg(){
 	}
 }
 
-var timeCountDown = state.getCurrentLevel() * 2;
+var timeCountDown = state.getCurrentLevel() * 3;
 function drawMainPage(){
 	stopWatchTime()
 	stopGuessTime()
 	var grid = new Grid(state.getNextStageLevel())
-	timeCountDown = state.getCurrentLevel() * 2
+	timeCountDown = state.getCurrentLevel() * 3
     watchIntervalId = setInterval(function(){displayWatchPage(grid, state)}, 1000);
 	writeTable(grid)
 	showLifeInfo(state.lifeNumber)

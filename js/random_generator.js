@@ -41,9 +41,9 @@ RandomGenerator.generateCondition = function(content){
 
 RandomGenerator.generateContent = function(size){
 	var result = new Array()
-	var candidateArray  = RandomGenerator.generateCandidateContent(size)
+	var candidateArray  = RandomGenerator.generateCandidateContent(3)
 	for (var i = 0; i < size * size; i++) {
-		var randomnumber = generateNumberWithin(size)
+		var randomnumber = generateNumberWithin(3)
 		result.push(candidateArray[randomnumber])
 	}
 	return result
