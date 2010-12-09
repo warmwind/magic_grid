@@ -132,6 +132,7 @@ function hideDataTable(grid, state){
 	$.each($('.front img'), function(){
 		$(this).fadeOut('slow', function(){
 			$(this).attr("src", "images/question.jpg")
+			$(this).attr("title", "")
 		})
 		$(this).fadeIn('slow')
 		});
